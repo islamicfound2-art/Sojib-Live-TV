@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOJIB TV Live</title>
+
+    <link rel="stylesheet" href="style.css?v=1.0.1">
+
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="SOJIB.png" alt="SOJIB TV" class="logo-img" onerror="this.style.display='none'">
+            <span class="logo-text">SOJIB TV</span>
+        </div>
+        <div class="live-badge">
+            <span class="live-dot"></span>
+            LIVE
+        </div>
+
+    </header>
+    <div class="main">
+        <!-- Player Side -->
+        <div class="player-side">
+
+            <div class="video-wrapper" id="videoWrapper">
+
+                <video id="video" playsinline webkit-playsinline preload="metadata">
+                </video>
+                <div class="buffer-spinner" id="bufferSpinner"></div>
+                <div class="center-play" id="centerPlay">
+                    ▶
+                </div>
+
+                <div class="controls">
+
+                    <button id="playBtn">
+                        ▶
+                    </button>
+
+                    <button id="fullscreenBtn">
+                        ⛶
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Channel Side -->
+        <div class="channel-side">
+            <input type="text" id="search" placeholder="Search channels...">
+            <div class="channel-grid">
+
+                <!-- FIFA LIVE -->
+                <div class="channel-card" data-url="https://live.thebosstv.com:30443/dwlive/Somoy-TV/chunks.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/FIFA_TV.png" alt="SOMOY TV">
+                    </div>
+                    <div class="channel-name">FIFA LIVE</div>
+                </div>
+
+                <!-- FIFA LIVE -->
+                <div class="channel-card" data-url="http://212.102.34.8:9080/AndFlixHD/video.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/FIFA_TV.png" alt="SOMOY TV">
+                    </div>
+                    <div class="channel-name">FIFA LIVE</div>
+                </div>
+
+                <!-- FIFA TV -->
+                <div class="channel-card"
+                    data-url="https://a62dad94.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWV1X0ZJRkFQbHVzRW5nbGlzaF9ITFM/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/FIFA_TV.png" alt="SOMOY TV">
+                    </div>
+                    <div class="channel-name">FIFA TV</div>
+                </div>
+
+                <!-- SOMOY TV -->
+                <div class="channel-card" data-url="https://live.thebosstv.com:30443/dwlive/Somoy-TV/chunks.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/SOMOY_TV.png" alt="SOMOY TV">
+                    </div>
+                    <div class="channel-name">SOMOY TV</div>
+                </div>
+
+                <!-- BTV -->
+                <div class="channel-card" data-url="http://198.195.239.50:8095/btv/tracks-v1a1/mono.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/BTV.png" alt="BTV">
+                    </div>
+                    <div class="channel-name">BTV</div>
+                </div>
+
+                <!-- DEEPTO TV -->
+                <div class="channel-card" data-url="http://198.195.239.50:8095/deepto/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/DEEPTO_TV.png" alt="Deepto TV">
+                    </div>
+                    <div class="channel-name">Deepto TV</div>
+                </div>
+
+                <!-- NTV -->
+                <div class="channel-card" data-url="http://198.195.239.50:8095/ntv/tracks-v1a1/mono.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/NTV.png" alt="NTV">
+                    </div>
+                    <div class="channel-name">NTV</div>
+                </div>
+
+                <!-- CHANNEL I -->
+                <div class="channel-card" data-url="http://198.195.239.50:8095/channelI/tracks-v1a1/mono.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/CHANNEL_I.png" alt="Channel i">
+                    </div>
+                    <div class="channel-name">Channel i</div>
+                </div>
+
+                <!-- BANGLAVISION -->
+                <div class="channel-card" data-url="http://198.195.239.50:8095/banglaVision/tracks-v1a1/mono.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/BANGLA_VISION.png" alt="BanglaVision">
+                    </div>
+                    <div class="channel-name">BanglaVision</div>
+                </div>
+
+                <!-- ATN BANGLA -->
+                <div class="channel-card" data-url="http://198.195.239.50:8095/atnBangla/tracks-v1a1/mono.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/ATN_BANGLA.png" alt="ATN Bangla">
+                    </div>
+                    <div class="channel-name">ATN Bangla</div>
+                </div>
+
+                <!-- JAMUNA TV -->
+                <div class="channel-card" data-url="http://198.195.239.50:8095/jamunaTv/tracks-v1a1/mono.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/JAMUNA_TV.png" alt="Jamuna TV">
+                    </div>
+                    <div class="channel-name">Jamuna TV</div>
+                </div>
+
+                <!-- EKATTOR TV -->
+                <div class="channel-card" data-url="http://198.195.239.50:8095/ekattorTv/tracks-v1a1/mono.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/EKATTOR_TV.png" alt="Ekattor TV">
+                    </div>
+                    <div class="channel-name">Ekattor TV</div>
+                </div>
+
+                <!-- ATN NEWS -->
+                <div class="channel-card" data-url="http://198.195.239.50:8095/atnNews/tracks-v1a1/mono.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/ATN_NEWS.png" alt="ATN News">
+                    </div>
+                    <div class="channel-name">ATN News</div>
+                </div>
+
+                <!-- CHANNEL 24 -->
+                <div class="channel-card" data-url="http://198.195.239.50:8095/channel24/tracks-v1a1/mono.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/CHANNEL_24.png" alt="Channel 24">
+                    </div>
+                    <div class="channel-name">Channel 24</div>
+                </div>
+
+                <!-- UNITE SPORTS 2 -->
+                <div class="channel-card" data-url="http://212.102.34.8:9080/AndFlixHD/video.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/UNITE_SPORTS_2.png" alt="UNITE SPORTS 2">
+                    </div>
+                    <div class="channel-name">UNITE SPORTS 2</div>
+                </div>
+
+                <!-- 4k Travel -->
+                <div class="channel-card"
+                    data-url="https://streams2.sofast.tv/sofastplayout/33c31ac4-51fa-46ae-afd0-0d1fe5e60a80_0_HLS/master.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/4K_TRAVEL.png" alt="4k Travel">
+                    </div>
+                    <div class="channel-name">4k Travel</div>
+                </div>
+
+                <!-- A SPOR -->
+                <div class="channel-card"
+                    data-url="https://rnttwmjcin.turknet.ercdn.net/lcpmvefbyo/aspor/aspor_480p.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/A_SPOR.png" alt="A SPOR">
+                    </div>
+                    <div class="channel-name">A SPOR</div>
+                </div>
+
+                <!-- AAKASH AATH -->
+                <div class="channel-card" data-url="https://cdn-4.pishow.tv/live/969/master.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/AAKASH_AATH.png" alt="AAKASH AATH">
+                    </div>
+                    <div class="channel-name">AAKASH AATH</div>
+                </div>
+
+                <!-- ABN -->
+                <div class="channel-card" data-url="https://mediaserver.abnvideos.com/streams/abnurdu.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/ABN.png" alt="ABN">
+                    </div>
+                    <div class="channel-name">ABN</div>
+                </div>
+
+                <!-- AccuWeather -->
+                <div class="channel-card"
+                    data-url="https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg00684-accuweather-accuweather-plex/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/ACCUWEATHER.png" alt="AccuWeather">
+                    </div>
+                    <div class="channel-name">AccuWeather</div>
+                </div>
+
+                <!-- Action Hollywood Movies (Link 2) -->
+                <div class="channel-card"
+                    data-url="https://amg01076-lightningintern-actionhollywood-samsungnz-82rry.amagi.tv/playlist/amg01076-lightningintern-actionhollywood-samsungnz/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/ACTION_HOLLYWOOD_MOVIES.png" alt="Action Hollywood Movies">
+                    </div>
+                    <div class="channel-name">Action Hollywood Movies</div>
+                </div>
+
+                <!-- Adventure Earth -->
+                <div class="channel-card"
+                    data-url="https://autentic-adventure-earth-1-eu.rakuten.wurl.tv/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/ADVENTURE_EARTH.png" alt="Adventure Earth">
+                    </div>
+                    <div class="channel-name">Adventure Earth</div>
+                </div>
+
+                <!-- AL EKHBARIA (Link 1) -->
+                <div class="channel-card"
+                    data-url="https://cdn-globecast.akamaized.net/live/eds/al_ekhbariya/hls_roku/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/AL_EKHBARIA.png" alt="AL EKHBARIA">
+                    </div>
+                    <div class="channel-name">AL EKHBARIA</div>
+                </div>
+
+                <!-- AL EKHBARIA (Link 2) -->
+                <div class="channel-card"
+                    data-url="https://shd-gcp-live.edgenextcdn.net/live/bitmovin-al-ekhbaria/297b3ef1cd0633ad9cfba7473a686a06/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/AL_EKHBARIA.png" alt="AL EKHBARIA">
+                    </div>
+                    <div class="channel-name">AL EKHBARIA</div>
+                </div>
+
+                <!-- AL ISTIQAMA -->
+                <div class="channel-card" data-url="https://jmc-live.ercdn.net/alistiqama/alistiqama.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/AL_ISTIQAMA.png" alt="AL ISTIQAMA">
+                    </div>
+                    <div class="channel-name">AL ISTIQAMA</div>
+                </div>
+
+                <!-- Al Jazeera (Link 1) -->
+                <div class="channel-card" data-url="https://owrcovcrpy.gpcdn.net/bpk-tv/1721/output/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/AL_JAZEERA.png" alt="Al Jazeera">
+                    </div>
+                    <div class="channel-name">Al Jazeera</div>
+                </div>
+
+                <!-- AL QAMAR -->
+                <div class="channel-card" data-url="https://streamer3.premio.link/alqamar/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/AL_QAMAR.png" alt="AL QAMAR">
+                    </div>
+                    <div class="channel-name">AL QAMAR</div>
+                </div>
+
+                <!-- Al Quran -->
+                <div class="channel-card" data-url="https://owrcovcrpy.gpcdn.net/bpk-tv/1713/output/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/AL_QURAN.png" alt="Al Quran">
+                    </div>
+                    <div class="channel-name">Al Quran</div>
+                </div>
+
+                <!-- Al Quran Radio -->
+                <div class="channel-card" data-url="http://66.45.232.131:9994/;stream.mp3">
+                    <div class="channel-logo">
+                        <img src="img/AL_QURAN_RADIO.png" alt="Al Quran Radio">
+                    </div>
+                    <div class="channel-name">Al Quran Radio</div>
+                </div>
+
+                <!-- AL SUNNAH TV -->
+                <div class="channel-card" data-url="http://m.live.net.sa:1935/live/sunnah/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/AL_SUNNAH_TV.png" alt="AL SUNNAH TV">
+                    </div>
+                    <div class="channel-name">AL SUNNAH TV</div>
+                </div>
+
+                <!-- ALMASIRA MUBASHER -->
+                <div class="channel-card"
+                    data-url="https://live2.cdnbridge.tv/AlmasirahMubasher/Mubasher_All/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/ALMASIRA_MUBASHER.png" alt="ALMASIRA MUBASHER">
+                    </div>
+                    <div class="channel-name">ALMASIRA MUBASHER</div>
+                </div>
+
+                <!-- Amazon SAT -->
+                <div class="channel-card" data-url="https://amazonsat.brasilstream.com.br/hls/amazonsat/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/AMAZON_SAT.png" alt="Amazon SAT">
+                    </div>
+                    <div class="channel-name">Amazon SAT</div>
+                </div>
+
+                <!-- Animal Planet HD -->
+                <div class="channel-card"
+                    data-url="https://tiger-hub.vercel.app@vodzong.mjunoon.tv:8087/streamtest/Animal-Planet-158-3/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/ANIMAL_PLANET_HD.png" alt="Animal Planet HD">
+                    </div>
+                    <div class="channel-name">Animal Planet HD</div>
+                </div>
+
+                <!-- Antarjal -->
+                <div class="channel-card"
+                    data-url="http://103.225.94.27/Infobase/hdd-2/Bangla/Antarjal%20(2023)%201080p%20WEBDL.mp4">
+                    <div class="channel-logo">
+                        <img src="img/ANTARJAL.png" alt="Antarjal">
+                    </div>
+                    <div class="channel-name">Antarjal</div>
+                </div>
+
+                <!-- Arabica TV -->
+                <div class="channel-card" data-url="http://istream.binarywaves.com:8081/hls/arabica/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/ARABICA_TV.png" alt="Arabica TV">
+                    </div>
+                    <div class="channel-name">Arabica TV</div>
+                </div>
+
+                <!-- Arihant TV -->
+                <div class="channel-card"
+                    data-url="https://aasthaott.akamaized.net/110923/smil:arihant.smil/chunklist_b1928000.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/ARIHANT_TV.png" alt="Arihant TV">
+                    </div>
+                    <div class="channel-name">Arihant TV</div>
+                </div>
+
+                <!-- Awaaz India -->
+                <div class="channel-card" data-url="http://awaazindia.livebox.co.in/AwaazIndaTVhls/Live.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/AWAAZ_INDIA.png" alt="Awaaz India">
+                    </div>
+                    <div class="channel-name">Awaaz India</div>
+                </div>
+
+                <!-- B4U Kadak -->
+                <div class="channel-card" data-url="https://cdn-2.pishow.tv/live/227/master.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/B4U_KADAK.png" alt="B4U Kadak">
+                    </div>
+                    <div class="channel-name">B4U Kadak</div>
+                </div>
+
+                <!-- BAHRAIN QURAN -->
+                <div class="channel-card"
+                    data-url="https://5c7b683162943.streamlock.net/live/ngrp:bahrainquran_all/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/BAHRAIN_QURAN.png" alt="BAHRAIN QURAN">
+                    </div>
+                    <div class="channel-name">BAHRAIN QURAN</div>
+                </div>
+
+                <div class="channel-card"
+                    data-url="https://5c7b683162943.streamlock.net/live/ngrp:sportsone_all/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/BAHRAIN_SPORTS_1.png" alt="Bahrain Sports 1">
+                    </div>
+                    <div class="channel-name">Bahrain Sports 1</div>
+                </div>
+
+                <div class="channel-card" data-url="https://live20.bozztv.com/giatvplayout7/giatv-209622/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/BBC_CBEEBIES.png" alt="BBC Cbeebies">
+                    </div>
+                    <div class="channel-name">BBC Cbeebies</div>
+                </div>
+
+                <div class="channel-card"
+                    data-url="https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg02873-kravemedia-mtrspt1-distrotv/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/BEIN_SPORTS_1.png" alt="Bein Sports 1">
+                    </div>
+                    <div class="channel-name">Bein Sports 1</div>
+                </div>
+
+                <div class="channel-card"
+                    data-url="https://cdn3.wowza.com/5/ZWQ1K2NYTmpFbGsr/BEK-WOWZA-1/smil:BEKPRIMEeast.smil/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/BEK_TV_NEWS.png" alt="BEK TV News">
+                    </div>
+                    <div class="channel-name">BEK TV News</div>
+                </div>
+
+                <div class="channel-card" data-url="http://103.175.73.12:8080/live/13/13_0.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/BIG_MAGIC.png" alt="Big Magic">
+                    </div>
+                    <div class="channel-name">Big Magic</div>
+                </div>
+
+                <div class="channel-card"
+                    data-url="https://linear-493.frequency.stream/dist/glewedtv/493/hls/master/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/BLEAV_FOOTBALL.png" alt="Bleav Football">
+                    </div>
+                    <div class="channel-name">Bleav Football</div>
+                </div>
+
+                <div class="channel-card"
+                    data-url="https://boishakhi.sonarbanglatv.com/boishakhi/boishakhitv/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/BOISHAKHI_TV.png" alt="Boishakhi TV">
+                    </div>
+                    <div class="channel-name">Boishakhi TV</div>
+                </div>
+
+                <div class="channel-card" data-url="https://nomawnoijl.gpcdn.net/akash/buddystar/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/BUDDYSTAR_HD.png" alt="BuddyStar HD">
+                    </div>
+                    <div class="channel-name">BuddyStar HD</div>
+                </div>
+
+                <div class="channel-card" data-url="https://owrcovcrpy.gpcdn.net/bpk-tv/1729/output/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/CHANNEL_9_HD.png" alt="Channel 9 HD">
+                    </div>
+                    <div class="channel-name">Channel 9 HD</div>
+                </div>
+
+                <div class="channel-card"
+                    data-url="https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/chsukoff.stream/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/CHANNEL_S.png" alt="Channel S">
+                    </div>
+                    <div class="channel-name">Channel S</div>
+                </div>
+
+                <div class="channel-card" data-url="https://cdn-4.pishow.tv/live/229/master.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/CHANNEL_WIN.png" alt="Channel Win">
+                    </div>
+                    <div class="channel-name">Channel Win</div>
+                </div>
+
+                <div class="channel-card" data-url="https://nomawnoijl.gpcdn.net/akash/cineedge/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/CINEEDGE_HD.png" alt="Cineedge HD">
+                    </div>
+                    <div class="channel-name">Cineedge HD</div>
+                </div>
+
+                <div class="channel-card"
+                    data-url="https://reflect-vod-cmac.cablecast.tv/live-11/live/stream-2/live.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/CMAC_TV.png" alt="CMAC TV">
+                    </div>
+                    <div class="channel-name">CMAC TV</div>
+                </div>
+
+                <div class="channel-card"
+                    data-url="https://turnerlive.warnermediacdn.com/hls/live/586495/cnngo/cnn_slate/VIDEO_0_3564000.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/CNN_US.png" alt="CNN (US)">
+                    </div>
+                    <div class="channel-name">CNN (US)</div>
+                </div>
+
+                <div class="channel-card" data-url="https://livecdn.live247stream.com/joomusic/tv/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/COLORS_INFINITY_SD.png" alt="Colors Infinity SD">
+                    </div>
+                    <div class="channel-name">Colors Infinity SD</div>
+                </div>
+
+                <div class="channel-card"
+                    data-url="https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg01438-ewscrippscompan-courttv-tablo/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/COURT_TV.png" alt="Court TV">
+                    </div>
+                    <div class="channel-name">Court TV</div>
+                </div>
+
+                <div class="channel-card"
+                    data-url="https://streams2.sofast.tv/sofastplayout/32eb332e-f644-46e5-ad91-e55ad80d14f7_0_HLS/master.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/COWBOY_MOVIE_CHANNEL.png" alt="Cowboy Movie Channel">
+                    </div>
+                    <div class="channel-name">Cowboy Movie Channel</div>
+                </div>
+
+                <div class="channel-card"
+                    data-url="https://amg17292-amg17292c1-distrotv-us-4170.playouts.now.amagi.tv/playlist/amg17292-tetonridgellc-tetonridgefast-distrotvus/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/COWBOY_TV.png" alt="Cowboy tv">
+                    </div>
+                    <div class="channel-name">Cowboy tv</div>
+                </div>
+
+                <div class="channel-card" data-url="https://nomawnoijl.gpcdn.net/akash/crazy_ex/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/CRAZY_EX.png" alt="Crazy Ex">
+                    </div>
+                    <div class="channel-name">Crazy Ex</div>
+                </div>
+
+                <div class="channel-card" data-url="https://nomawnoijl.gpcdn.net/akash/crimes/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/CRIMES.png" alt="Crimes">
+                    </div>
+                    <div class="channel-name">Crimes</div>
+                </div>
+
+                <div class="channel-card" data-url="https://owrcovcrpy.gpcdn.net/bpk-tv/1728/output/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/DBC_NEWS_HD.png" alt="DBC News HD">
+                    </div>
+                    <div class="channel-name">DBC News HD</div>
+                </div>
+
+                <div class="channel-card"
+                    data-url="https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/7ff57cc9046b4c188b51a0d506f36e7f/index_3.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/DD_BANGLA.png" alt="DD Bangla">
+                    </div>
+                    <div class="channel-name">DD Bangla</div>
+                </div>
+
+                <div class="channel-card" data-url="https://cdn-6.pishow.tv/live/13/master.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/DD_SPORTS.png" alt="DD Sports">
+                    </div>
+                    <div class="channel-name">DD Sports</div>
+                </div>
+
+                <div class="channel-card" data-url="https://nomawnoijl.gpcdn.net/akash/delicious/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/DELICIOUS.png" alt="Delicious">
+                    </div>
+                    <div class="channel-name">Delicious</div>
+                </div>
+
+                <div class="channel-card" data-url="https://bozztv.com/rongo/rongo-DeshTV/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/DESH_TV.png" alt="Desh TV">
+                    </div>
+                    <div class="channel-name">Desh TV</div>
+                </div>
+
+                <div class="channel-card" data-url="https://dbcanada.sonarbanglatv.com/deshebideshe/dbtv/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/DESHE_BIDESHE.png" alt="Deshe Bideshe">
+                    </div>
+                    <div class="channel-name">Deshe Bideshe</div>
+                </div>
+
+                <div class="channel-card" data-url="https://deshitv.deshitv24.net/live/myStream/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/DESHI_TV.png" alt="Deshi TV (720p)">
+                    </div>
+                    <div class="channel-name">Deshi TV</div>
+                </div>
+
+                <div class="channel-card" data-url="http://103.175.73.12:8080/live/378/378_0.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/DHOOM_MUSIC.png" alt="Dhoom Music">
+                    </div>
+                    <div class="channel-name">Dhoom Music</div>
+                </div>
+
+                <div class="channel-card" data-url="http://115.187.41.216:8080/hls/digitalfashion/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/DIGITAL_FASHION.png" alt="Digital Fashion">
+                    </div>
+                    <div class="channel-name">Digital Fashion</div>
+                </div>
+
+                <div class="channel-card" data-url="https://s.emisoras.tv:8081/diostevekids/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/DIOS_TE_VE_KIDS.png" alt="Dios Te Ve Kids">
+                    </div>
+                    <div class="channel-name">Dios Te Ve Kids</div>
+                </div>
+
+                <div class="channel-card"
+                    data-url="https://livecdn.live247stream.com/discoverpakistan/web/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/DISCOVER_PAKISTAN.png" alt="Discover Pakistan">
+                    </div>
+                    <div class="channel-name">Discover Pakistan</div>
+                </div>
+
+                <div class="channel-card"
+                    data-url="https://live20.bozztv.com/giatvplayout7/giatv-209902/tracks-v1a1/mono.ts.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/DORAEMON.png" alt="Doraemon">
+                    </div>
+                    <div class="channel-name">Doraemon</div>
+                </div>
+
+                <!-- Jana Nayagan (2026) (Hindi) -->
+                <div class="channel-card" data-url="http://premimum.online/movie/jen12345/jen54321/724489.mp4">
+                    <div class="channel-logo">
+                        <img src="img/JANA_NAYAGAN.png" alt="Jana Nayagan (2026) (Hindi)">
+                    </div>
+                    <div class="channel-name">Jana Nayagan</div>
+                </div>
+
+                <!-- Joy -->
+                <div class="channel-card" data-url="https://nomawnoijl.gpcdn.net/akash/joy/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/JOY.png" alt="Joy">
+                    </div>
+                    <div class="channel-name">Joy</div>
+                </div>
+
+                <!-- Junglebook -->
+                <div class="channel-card"
+                    data-url="https://cc-4bhi5osabejc9.akamaized.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-4bhi5osabejc9/junglebook.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/JUNGLEBOOK.png" alt="Junglebook">
+                    </div>
+                    <div class="channel-name">Junglebook</div>
+                </div>
+
+                <!-- Khushboo -->
+                <div class="channel-card" data-url="https://cdn-4.pishow.tv/live/1473/master.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/KHUSHBOO.png" alt="Khushboo">
+                    </div>
+                    <div class="channel-name">Khushboo</div>
+                </div>
+
+                <!-- Kids Pang TV -->
+                <div class="channel-card" data-url="https://newidco-kidspangtv-1-us.roku.wurl.tv/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/KIDS_PANG_TV.png" alt="Kids Pang TV">
+                    </div>
+                    <div class="channel-name">Kids Pang TV</div>
+                </div>
+
+                <!-- Kids Stars -->
+                <div class="channel-card" data-url="https://nomawnoijl.gpcdn.net/akash/kidsstars/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/KIDS_STARS.png" alt="Kids Stars">
+                    </div>
+                    <div class="channel-name">Kids Stars</div>
+                </div>
+
+                <!-- Kolkata TV -->
+                <div class="channel-card" data-url="https://cdn.ottlive.co.in/kolkatatv/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/KOLKATA_TV.png" alt="Kolkata TV">
+                    </div>
+                    <div class="channel-name">Kolkata TV</div>
+                </div>
+
+                <!-- Live Quran TV -->
+                <div class="channel-card"
+                    data-url="https://live.kwikmotion.com/sharjahtvquranlive/shqurantv.smil/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/LIVE_QURAN_TV.png" alt="Live Quran TV">
+                    </div>
+                    <div class="channel-name">Live Quran TV</div>
+                </div>
+
+                <!-- Lucky Family -->
+                <div class="channel-card" data-url="https://nomawnoijl.gpcdn.net/akash/luckyfamily/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/LUCKY_FAMILY.png" alt="Lucky Family">
+                    </div>
+                    <div class="channel-name">Lucky Family</div>
+                </div>
+
+                <!-- Luxel HD -->
+                <div class="channel-card" data-url="https://nomawnoijl.gpcdn.net/akash/luxell/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/LUXEL_HD.png" alt="Luxel HD">
+                    </div>
+                    <div class="channel-name">Luxel HD</div>
+                </div>
+
+                <!-- Maasranga TV -->
+                <div class="channel-card" data-url="https://owrcovcrpy.gpcdn.net/bpk-tv/1722/output/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/MAASRANGA_TV.png" alt="Maasranga TV">
+                    </div>
+                    <div class="channel-name">Maasranga TV</div>
+                </div>
+
+                <!-- Mardaani 3 -->
+                <div class="channel-card"
+                    data-url="http://103.225.94.27/Infobase/hdd-3/hindi/Mardaani%203%20(2026)%201080p%20DVDRip.mp4">
+                    <div class="channel-logo">
+                        <img src="img/MARDAANI_3.png" alt="Mardaani 3">
+                    </div>
+                    <div class="channel-name">Mardaani 3</div>
+                </div>
+
+                <!-- MBC tv -->
+                <div class="channel-card" data-url="http://93.184.10.248/MBCBollywood/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/MBC_TV.png" alt="MBC tv">
+                    </div>
+                    <div class="channel-name">MBC tv</div>
+                </div>
+
+                <!-- MK Six -->
+                <div class="channel-card" data-url="https://cdn-3.pishow.tv/live/1253/master.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/MK_SIX.png" alt="MK Six">
+                    </div>
+                    <div class="channel-name">MK Six</div>
+                </div>
+
+                <!-- More Then Sports TV -->
+                <div class="channel-card" data-url="https://mts1.iptv-playoutcenter.de/mts/mts-web/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/MORE_THEN_SPORTS_TV.png" alt="More Then Sports TV">
+                    </div>
+                    <div class="channel-name">More Then Sports TV</div>
+                </div>
+
+                <!-- Motor Vision -->
+                <div class="channel-card" data-url="https://mvg-mv-xumo.otteravision.com/mvg/mv/mv.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/MOTOR_VISION.png" alt="Motor Vision">
+                    </div>
+                    <div class="channel-name">Motor Vision</div>
+                </div>
+
+                <!-- Motu Patlu -->
+                <div class="channel-card"
+                    data-url="https://live20.bozztv.com/giatvplayout7/giatv-209622/tracks-v1a1/mono.ts.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/MOTU_PATLU.png" alt="Motu Patlu">
+                    </div>
+                    <div class="channel-name">Motu Patlu</div>
+                </div>
+
+                <!-- Movie Sphere -->
+                <div class="channel-card" data-url="https://moviesphereuk-samsunguk.amagi.tv/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/MOVIE_SPHERE.png" alt="Movie Sphere">
+                    </div>
+                    <div class="channel-name">Movie Sphere</div>
+                </div>
+
+                <!-- Music India -->
+                <div class="channel-card" data-url="https://cdn-4.pishow.tv/live/226/master.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/MUSIC_INDIA.png" alt="Music India">
+                    </div>
+                    <div class="channel-name">Music India</div>
+                </div>
+
+                <!-- Music India -->
+                <div class="channel-card" data-url="http://103.175.73.12:8080/live/158/158_0.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/MUSIC_INDIA_ALT.png" alt="Music India">
+                    </div>
+                    <div class="channel-name">Music India</div>
+                </div>
+
+                <!-- Music Mastii -->
+                <div class="channel-card"
+                    data-url="https://live20.bozztv.com/giatvplayout7/giatv-209592/tracks-v1a1/mono.ts.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/MUSIC_MASTII.png" alt="Music Mastii">
+                    </div>
+                    <div class="channel-name">Music Mastii</div>
+                </div>
+
+                <!-- NBC Sports -->
+                <div class="channel-card" data-url="https://xumo-xumoent-vc-122-sjv70.fast.nbcuni.com/live/master.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/NBC_SPORTS.png" alt="NBC Sports">
+                    </div>
+                    <div class="channel-name">NBC Sports</div>
+                </div>
+
+                <!-- NDTV Hindi -->
+                <div class="channel-card"
+                    data-url="https://ndtvindiaelemarchana.akamaized.net/hls/live/2003679/ndtvindia/master.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/NDTV_HINDI.png" alt="NDTV Hindi">
+                    </div>
+                    <div class="channel-name">NDTV Hindi</div>
+                </div>
+
+                <!-- NDTV NEWS -->
+                <div class="channel-card"
+                    data-url="https://ndtv24x7elemarchana.akamaized.net/hls/live/2003678-b/ndtv24x7/master.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/NDTV_NEWS.png" alt="NDTV NEWS">
+                    </div>
+                    <div class="channel-name">NDTV NEWS</div>
+                </div>
+
+                <!-- News 24 HD -->
+                <div class="channel-card" data-url="https://owrcovcrpy.gpcdn.net/bpk-tv/1708/output/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/NEWS_24_HD.png" alt="News 24 HD">
+                    </div>
+                    <div class="channel-name">News 24 HD</div>
+                </div>
+
+                <!-- News Max 2 -->
+                <div class="channel-card" data-url="https://nmxlive.akamaized.net/hls/live/529965/Live_1/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/NEWS_MAX_2.png" alt="News Max 2">
+                    </div>
+                    <div class="channel-name">News Max 2</div>
+                </div>
+
+                <!-- News Nation -->
+                <div class="channel-card"
+                    data-url="https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/6cd2f649739a45ca9de1daf81cc7d0f2/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/NEWS_NATION.png" alt="News Nation">
+                    </div>
+                    <div class="channel-name">News Nation</div>
+                </div>
+
+                <!-- Nikki -->
+                <div class="channel-card" data-url="https://nomawnoijl.gpcdn.net/akash/nikky/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/NIKKI.png" alt="Nikki">
+                    </div>
+                    <div class="channel-name">Nikki</div>
+                </div>
+
+                <!-- OAN -->
+                <div class="channel-card" data-url="https://a-cdn.klowdtv.com/live1/oan_720p/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/OAN.png" alt="OAN">
+                    </div>
+                    <div class="channel-name">OAN</div>
+                </div>
+
+                <!-- Oman Sports TV -->
+                <div class="channel-card"
+                    data-url="https://partneta.cdn.mgmlcdn.com/omsport/smil:omsport.stream.smil/chunklist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/OMAN_SPORTS_TV.png" alt="Oman Sports TV">
+                    </div>
+                    <div class="channel-name">Oman Sports TV</div>
+                </div>
+
+                <!-- Originals -->
+                <div class="channel-card" data-url="https://nomawnoijl.gpcdn.net/akash/originals/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/ORIGINALS.png" alt="Originals">
+                    </div>
+                    <div class="channel-name">Originals</div>
+                </div>
+
+                <!-- Party Universe -->
+                <div class="channel-card" data-url="https://nomawnoijl.gpcdn.net/akash/partyuniverse/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/PARTY_UNIVERSE.png" alt="Party Universe">
+                    </div>
+                    <div class="channel-name">Party Universe</div>
+                </div>
+
+                <!-- PBS Kids -->
+                <div class="channel-card"
+                    data-url="https://2-fss-2.streamhoster.com/pl_140/amlst:200914-1298290/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/PBS_KIDS.png" alt="PBS Kids">
+                    </div>
+                    <div class="channel-name">PBS Kids</div>
+                </div>
+
+                <!-- Persiana Korea -->
+                <div class="channel-card" data-url="https://korhls.persiana.live/hls/stream.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/PERSIANA_KOREA.png" alt="Persiana Korea">
+                    </div>
+                    <div class="channel-name">Persiana Korea</div>
+                </div>
+
+                <!-- Power Turk -->
+                <div class="channel-card"
+                    data-url="https://livetv.powerapp.com.tr/powerturkTV/powerturkhd.smil/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/POWER_TURK.png" alt="Power Turk">
+                    </div>
+                    <div class="channel-name">Power Turk</div>
+                </div>
+
+                <!-- Press TV Iran -->
+                <div class="channel-card" data-url="https://live.presstv.ir/hls/presstv_5_482/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/PRESS_TV_IRAN.png" alt="Press TV Iran">
+                    </div>
+                    <div class="channel-name">Press TV Iran</div>
+                </div>
+
+                <!-- QURAN -->
+                <div class="channel-card" data-url="http://m.live.net.sa:1935/live/quran/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/QURAN.png" alt="QURAN">
+                    </div>
+                    <div class="channel-name">QURAN</div>
+                </div>
+
+                <!-- Quran -->
+                <div class="channel-card"
+                    data-url="https://download.quranicaudio.com/qdc/abdurrahmaan_as_sudais/murattal/96.mp3">
+                    <div class="channel-logo">
+                        <img src="img/QURAN_AUDIO.png" alt="Quran">
+                    </div>
+                    <div class="channel-name">Quran</div>
+                </div>
+
+                <!-- QURAN RADIOTV SMC -->
+                <div class="channel-card"
+                    data-url="https://live.kwikmotion.com/smcquranlive/quranradiolive/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/QURAN_RADIOTV_SMC.png" alt="QURAN RADIOTV SMC">
+                    </div>
+                    <div class="channel-name">QURAN RADIOTV SMC</div>
+                </div>
+
+                <!-- R Plus -->
+                <div class="channel-card" data-url="https://thelegitpro.in/pntv/rplusnews24x7/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/R_PLUS.png" alt="R Plus">
+                    </div>
+                    <div class="channel-name">R Plus</div>
+                </div>
+
+                <!-- R Plus Gold -->
+                <div class="channel-card" data-url="https://cdn-4.pishow.tv/live/1231/1231_1.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/R_PLUS_GOLD.png" alt="R Plus Gold">
+                    </div>
+                    <div class="channel-name">R Plus Gold</div>
+                </div>
+
+                <div class="channel-card" data-url="https://cdn-4.pishow.tv/live/1231/1231_2.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/R_PLUS_GOULD.png" alt="R Plus Gould">
+                    </div>
+                    <div class="channel-name">R Plus Gould</div>
+                </div>
+
+                <!-- Rakuten Movies -->
+                <div class="channel-card"
+                    data-url="https://0145451975a64b35866170fd2e8fa486.mediatailor.eu-west-1.amazonaws.com/v1/master/0547f18649bd788bec7b67b746e47670f558b6b2/production-LiveChannel-5987/master.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/RAKUTEN_MOVIES.png" alt="Rakuten Movies">
+                    </div>
+                    <div class="channel-name">Rakuten Movies</div>
+                </div>
+
+                <!-- REAL WILD -->
+                <div class="channel-card"
+                    data-url="https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg00426-littledotstudio-realwild-tcl/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/REAL_WILD.png" alt="REAL WILD">
+                    </div>
+                    <div class="channel-name">REAL WILD</div>
+                </div>
+
+                <!-- Rongeen TV -->
+                <div class="channel-card" data-url="https://server.thelegitpro.in/rongeentv/rongeentv/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/RONGEEN_TV.png" alt="Rongeen TV">
+                    </div>
+                    <div class="channel-name">Rongeen TV</div>
+                </div>
+
+                <!-- RT News (EN) -->
+                <div class="channel-card" data-url="https://rt-glb.rttv.com/live/rtnews/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/RT_NEWS_EN.png" alt="RT News (EN)">
+                    </div>
+                    <div class="channel-name">RT News (EN)</div>
+                </div>
+
+                <!-- RT NEWS USA -->
+                <div class="channel-card" data-url="https://rt-glb.rttv.com/live/rtnews/playlist.m3u8?v=1">
+                    <div class="channel-logo">
+                        <img src="img/RT_NEWS_USA.png" alt="RT NEWS USA">
+                    </div>
+                    <div class="channel-name">RT NEWS USA</div>
+                </div>
+
+                <!-- RTNEWS GLOBAL -->
+                <div class="channel-card" data-url="https://rt-rtd.rttv.com/dvr/rtdoc/playlist.m3u8?v=1">
+                    <div class="channel-logo">
+                        <img src="img/RTNEWS_GLOBAL.png" alt="RTNEWS GLOBAL">
+                    </div>
+                    <div class="channel-name">RTNEWS GLOBAL</div>
+                </div>
+
+                <!-- Sangeet Bangla -->
+                <div class="channel-card" data-url="https://cdn-4.pishow.tv/live/1143/master.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/SANGEET_BANGLA.png" alt="Sangeet Bangla">
+                    </div>
+                    <div class="channel-name">Sangeet Bangla</div>
+                </div>
+
+                <!-- Saudi Quran -->
+                <div class="channel-card"
+                    data-url="https://cdn-globecast.akamaized.net/live/eds/saudi_quran/hls_roku/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/SAUDI_QURAN.png" alt="Saudi Quran">
+                    </div>
+                    <div class="channel-name">Saudi Quran</div>
+                </div>
+
+                <!-- Saudia Arabia -->
+                <div class="channel-card"
+                    data-url="https://shd-gcp-live.edgenextcdn.net/live/bitmovin-saudi-tv/2ad66056b51fd8c1b624854623112e43/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/SAUDIA_ARABIA.png" alt="Saudia Arabia">
+                    </div>
+                    <div class="channel-name">Saudia Arabia</div>
+                </div>
+
+                <!-- Screem -->
+                <div class="channel-card" data-url="https://nomawnoijl.gpcdn.net/akash/screem/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/SCREEM.png" alt="Screem">
+                    </div>
+                    <div class="channel-name">Screem</div>
+                </div>
+
+                <!-- Sheemaroo Bollywood -->
+                <div class="channel-card"
+                    data-url="https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg00864-shemarooenterta-shemabollywood-ono/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/SHEEMAROO_BOLLYWOOD.png" alt="Sheemaroo Bollywood">
+                    </div>
+                    <div class="channel-name">Sheemaroo Bollywood</div>
+                </div>
+
+                <!-- Shemaroo TV -->
+                <div class="channel-card" data-url="https://cdn-3.pishow.tv/live/230/master.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/SHEMAROO_TV.png" alt="Shemaroo TV">
+                    </div>
+                    <div class="channel-name">Shemaroo TV</div>
+                </div>
+
+                <!-- Sky News Weather -->
+                <div class="channel-card"
+                    data-url="https://distro001-gb-hls1-prd.delivery.skycdp.com/easel_cdn/ngrp:weather_loop.stream_all/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/SKY_NEWS_WEATHER.png" alt="Sky News Weather">
+                    </div>
+                    <div class="channel-name">Sky News Weather</div>
+                </div>
+
+                <!-- Smarty -->
+                <div class="channel-card" data-url="https://nomawnoijl.gpcdn.net/akash/smarty/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/SMARTY.png" alt="Smarty">
+                    </div>
+                    <div class="channel-name">Smarty</div>
+                </div>
+
+                <!-- Sony ATTH -->
+                <div class="channel-card" data-url="https://live20.bozztv.com/giatvplayout7/giatv-209611/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/SONY_ATTH.png" alt="Sony ATTH">
+                    </div>
+                    <div class="channel-name">Sony ATTH</div>
+                </div>
+
+                <!-- South Movies -->
+                <div class="channel-card"
+                    data-url="https://live20.bozztv.com/giatvplayout7/giatv-209593/tracks-v1a1/mono.ts.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/SOUTH_MOVIES.png" alt="South Movies">
+                    </div>
+                    <div class="channel-name">South Movies</div>
+                </div>
+
+                <!-- speed sports 1 -->
+                <div class="channel-card"
+                    data-url="https://linear-599.frequency.stream/dist/stirr/599/hls/master/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/SPEED_SPORTS_1.png" alt="speed sports 1">
+                    </div>
+                    <div class="channel-name">speed sports 1</div>
+                </div>
+
+                <!-- Sports First TV -->
+                <div class="channel-card"
+                    data-url="https://d4ddgdmj1cvnm.cloudfront.net/scheduler/scheduleMaster/409.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/SPORTS_FIRST_TV.png" alt="Sports First TV">
+                    </div>
+                    <div class="channel-name">Sports First TV</div>
+                </div>
+
+                <!-- Sports Fishing TV -->
+                <div class="channel-card"
+                    data-url="https://streams2.sofast.tv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/eea68b79-bfe2-451e-a227-d637a5b9548a/manifest.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/SPORTS_FISHING_TV.png" alt="Sports Fishing TV">
+                    </div>
+                    <div class="channel-name">Sports Fishing TV</div>
+                </div>
+
+                <!-- Sports Legends -->
+                <div class="channel-card" data-url="https://nomawnoijl.gpcdn.net/akash/sportslegends/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/SPORTS_LEGENDS.png" alt="Sports Legends">
+                    </div>
+                    <div class="channel-name">Sports Legends</div>
+                </div>
+
+                <!-- Sports Range -->
+                <div class="channel-card" data-url="https://nomawnoijl.gpcdn.net/akash/sportrange/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/SPORTS_RANGE.png" alt="Sports Range">
+                    </div>
+                    <div class="channel-name">Sports Range</div>
+                </div>
+
+                <!-- SRK TV -->
+                <div class="channel-card"
+                    data-url="https://srknowapp.ncare.live/srktvhlswodrm/srktv.stream/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/SRK_TV.png" alt="SRK TV">
+                    </div>
+                    <div class="channel-name">SRK TV</div>
+                </div>
+
+                <!-- Star News -->
+                <div class="channel-card" data-url="https://owrcovcrpy.gpcdn.net/bpk-tv/1710/output/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/STAR_NEWS.png" alt="Star News">
+                    </div>
+                    <div class="channel-name">Star News</div>
+                </div>
+
+                <!-- Sunnah Tv -->
+                <div class="channel-card" data-url="http://m.live.net.sa:1935/live/sunnah/chunklist.m3u8?v=1">
+                    <div class="channel-logo">
+                        <img src="img/SUNNAH_TV.png" alt="Sunnah Tv">
+                    </div>
+                    <div class="channel-name">Sunnah Tv</div>
+                </div>
+
+                <!-- Superrix HD -->
+                <div class="channel-card" data-url="https://nomawnoijl.gpcdn.net/akash/superrix/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/SUPERRIX_HD.png" alt="Superrix HD">
+                    </div>
+                    <div class="channel-name">Superrix HD</div>
+                </div>
+
+                <!-- Surongo -->
+                <div class="channel-card"
+                    data-url="https://pub-d8f5af7f053343ed8295b16a145f6c1c.r2.dev/siam/[FGBDVibes]Surongo.(2023).480p.mkv">
+                    <div class="channel-logo">
+                        <img src="img/SURONGO.png" alt="Surongo">
+                    </div>
+                    <div class="channel-name">Surongo</div>
+                </div>
+
+                <!-- T Global News -->
+                <div class="channel-card"
+                    data-url="https://live.corusdigitaldev.com/groupd/live/49a91e7f-1023-430f-8d66-561055f3d0f7/live.isml/master.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/T_GLOBAL_NEWS.png" alt="T Global News">
+                    </div>
+                    <div class="channel-name">T Global News</div>
+                </div>
+
+                <!-- TBS -->
+                <div class="channel-card" data-url="https://cdntv.tbs.seoul.kr/tbs/tbs_tv_web.smil/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/TBS.png" alt="TBS">
+                    </div>
+                    <div class="channel-name">TBS</div>
+                </div>
+
+                <!-- Thikana -->
+                <div class="channel-card"
+                    data-url="https://5dd3981940faa.streamlock.net:443/thikanatv/thikanatv/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/THIKANA.png" alt="Thikana">
+                    </div>
+                    <div class="channel-name">Thikana</div>
+                </div>
+
+                <!-- Thunder Er -->
+                <div class="channel-card" data-url="https://nomawnoijl.gpcdn.net/akash/thunder/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/THUNDER_ER.png" alt="Thunder Er">
+                    </div>
+                    <div class="channel-name">Thunder Er</div>
+                </div>
+
+                <!-- Times Of India -->
+                <div class="channel-card" data-url="https://live.sli.ke/live/npnhm84gz9/master.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/TIMES_OF_INDIA.png" alt="Times Of India">
+                    </div>
+                    <div class="channel-name">Times Of India</div>
+                </div>
+
+                <!-- Tom & Jarry -->
+                <div class="channel-card" data-url="https://live20.bozztv.com/giatvplayout7/giatv-208314/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/TOM_JARRY.png" alt="Tom & Jarry">
+                    </div>
+                    <div class="channel-name">Tom & Jarry</div>
+                </div>
+
+                <!-- Travel XP -->
+                <div class="channel-card"
+                    data-url="https://27c980761ff9437d929e64647afe183a.mediatailor.us-east-1.amazonaws.com/v1/master/44f73ba4d03e9607dcd9bebdcb8494d86964f1d8/RakutenTV-eu_TravelXP/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/TRAVEL_XP.png" alt="Travel XP">
+                    </div>
+                    <div class="channel-name">Travel XP</div>
+                </div>
+
+                <!-- TRT World -->
+                <div class="channel-card" data-url="https://tv-trtworld.medya.trt.com.tr/master.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/TRT_WORLD.png" alt="TRT World">
+                    </div>
+                    <div class="channel-name">TRT World</div>
+                </div>
+
+                <!-- True Stories -->
+                <div class="channel-card" data-url="https://nomawnoijl.gpcdn.net/akash/truestories/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/TRUE_STORIES.png" alt="True Stories">
+                    </div>
+                    <div class="channel-name">True Stories</div>
+                </div>
+
+                <!-- TV9 Bangla -->
+                <div class="channel-card"
+                    data-url="https://dyjmyiv3bp2ez.cloudfront.net/pub-iotv9banaen8yq/liveabr/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/TV9_BANGLA.png" alt="TV9 Bangla">
+                    </div>
+                    <div class="channel-name">TV9 Bangla</div>
+                </div>
+
+                <!-- TVCARiB Kids & Teens -->
+                <div class="channel-card"
+                    data-url="https://cdn.mycloudstream.io/hls/live/broadcast/nro19k2h/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/TVCARIB_KIDS_TEENS.png" alt="TVCARiB Kids & Teens">
+                    </div>
+                    <div class="channel-name">TVCARiB Kids & Teens</div>
+                </div>
+
+                <!-- Uniques HD -->
+                <div class="channel-card" data-url="https://nomawnoijl.gpcdn.net/akash/uniques/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/UNIQUES_HD.png" alt="Uniques HD">
+                    </div>
+                    <div class="channel-name">Uniques HD</div>
+                </div>
+
+                <!-- WAZ TV -->
+                <div class="channel-card" data-url="https://tplay.live/originals/ilm-tv/index.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/WAZ_TV.png" alt="WAZ TV">
+                    </div>
+                    <div class="channel-name">WAZ TV</div>
+                </div>
+
+                <!-- Weather SPY -->
+                <div class="channel-card" data-url="https://jukin-weatherspy-2-in.samsung.wurl.tv/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/WEATHER_SPY.png" alt="Weather SPY">
+                    </div>
+                    <div class="channel-name">Weather SPY</div>
+                </div>
+
+                <!-- PlayZ TV -->
+                <div class="channel-card" data-url="https://playztv.pages.dev/promo/master.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/PLAYZ_TV.png" alt="PlayZ TV">
+                    </div>
+                    <div class="channel-name">PlayZ TV</div>
+                </div>
+
+                <!-- Wild TV -->
+                <div class="channel-card"
+                    data-url="https://dfhsahpa45kk2.cloudfront.net/scheduler/scheduleMaster/476.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/WILD_TV.png" alt="Wild TV">
+                    </div>
+                    <div class="channel-name">Wild TV</div>
+                </div>
+
+                <!-- Wion -->
+                <div class="channel-card" data-url="https://d7x8z4yuq42qn.cloudfront.net/index_7.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/WION.png" alt="Wion">
+                    </div>
+                    <div class="channel-name">Wion</div>
+                </div>
+
+                <!-- WOF 1 -->
+                <div class="channel-card"
+                    data-url="https://mainstreammedia-worldoffreesportsintl-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-mainstreammediafreesportsintl-rakuten/CDN/master.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/WOF_1.png" alt="WOF 1">
+                    </div>
+                    <div class="channel-name">WOF 1</div>
+                </div>
+
+                <!-- World War TV -->
+                <div class="channel-card" data-url="https://aenetworks-worldwartv-rakuten.amagi.tv/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/WORLD_WAR_TV.png" alt="World War TV">
+                    </div>
+                    <div class="channel-name">World War TV</div>
+                </div>
+
+                <!-- Xtrem Sports -->
+                <div class="channel-card"
+                    data-url="https://streams2.sofast.tv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/e0b81a5c-6ab5-48cd-aaa9-f82de4ab5bf9/manifest.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/XTREM_SPORTS.png" alt="Xtrem Sports">
+                    </div>
+                    <div class="channel-name">Xtrem Sports</div>
+                </div>
+
+                <!-- YRF Music HD -->
+                <div class="channel-card"
+                    data-url="https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg01412-xiaomiasia-yrfmusic-xiaomi/playlist.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/YRF_MUSIC_HD.png" alt="YRF Music HD">
+                    </div>
+                    <div class="channel-name">YRF Music HD</div>
+                </div>
+
+                <!-- Z Bangla -->
+                <div class="channel-card" data-url="https://yupptvcatchupire.yuppcdn.net/preview/zeebangla/2500.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/Z_BANGLA.png" alt="Z Bangla">
+                    </div>
+                    <div class="channel-name">Z Bangla</div>
+                </div>
+
+                <!-- Zee Action -->
+                <div class="channel-card" data-url="http://103.175.73.12:8080/live/270/270_0.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/ZEE_ACTION.png" alt="Zee Action">
+                    </div>
+                    <div class="channel-name">Zee Action</div>
+                </div>
+
+                <!-- Zee Anmol TV -->
+                <div class="channel-card" data-url="http://103.175.73.12:8080/live/256/256_0.m3u8">
+                    <div class="channel-logo">
+                        <img src="img/ZEE_ANMOL_TV.png" alt="Zee Anmol TV">
+                    </div>
+                    <div class="channel-name">Zee Anmol TV</div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js?v=1.0.1"></script>
+
+</body>
+
+</html>

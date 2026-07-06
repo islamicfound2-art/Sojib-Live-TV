@@ -1,0 +1,357 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    overflow: hidden; /* prevent body scroll on desktop */
+}
+
+body {
+    background: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+.header {
+    height: 60px;
+    padding: 0 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #111;
+    flex-shrink: 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    height: 38px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.logo-text {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    color: #fff;
+}
+
+.live-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #1a1a1a;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 0 20px rgba(255, 0, 0, .25);
+}
+
+.live-dot {
+    width: 12px;
+    height: 12px;
+    background: red;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(255, 0, 0, .8); }
+    70%  { box-shadow: 0 0 0 12px rgba(255, 0, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+}
+
+/* ── DESKTOP: two columns, both fixed, channel list scrolls ── */
+.main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
+    padding: 20px;
+    height: calc(100vh - 60px); /* exact remaining height */
+    overflow: hidden;           /* nothing bleeds out */
+}
+
+.player-side {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.video-wrapper {
+    position: relative;
+    overflow: hidden;
+    background: #000;
+    border-radius: 25px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    flex-shrink: 0;
+}
+
+/* Fullscreen */
+.video-wrapper:fullscreen,
+.video-wrapper:-webkit-full-screen {
+    aspect-ratio: unset;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: black;
+    object-fit: contain;
+}
+
+/* Buffering spinner */
+.buffer-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 46px;
+    height: 46px;
+    margin: -23px 0 0 -23px;
+    border: 4px solid rgba(255, 255, 255, .25);
+    border-top-color: #ff0066;
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s;
+}
+
+.buffer-spinner.show { opacity: 1; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.center-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    cursor: pointer;
+    opacity: 1;
+    transition: .3s;
+}
+
+.controls {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(transparent, rgba(0, 0, 0, .9));
+    opacity: 1;
+    transition: .3s;
+}
+
+.controls button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.live-tag {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.player-info {
+    margin-top: 18px;
+}
+
+.player-info h1 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* Channel panel — scrolls internally, never overflows the viewport */
+.channel-side {
+    background: #111;
+    border-radius: 25px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;   /* allow shrinking inside grid */
+    overflow: hidden;
+}
+
+.channel-side::-webkit-scrollbar { width: 0; }
+
+#search {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    background: #1b1b1b;
+    color: white;
+    margin-bottom: 20px;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+/* The grid itself is the scrolling area */
+.channel-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+    padding-right: 2px; /* tiny gap so scrollbar doesn't clip cards */
+}
+
+.channel-grid::-webkit-scrollbar { width: 0; }
+
+.channel-card {
+    background: #181818;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: .3s;
+    /* prevent card from growing taller than its content */
+    align-self: start;
+}
+
+.channel-card:hover  { background: #202020; }
+.channel-card.active { border-color: #ff0066; }
+
+.channel-logo {
+    width: 80px;
+    height: 80px;
+    margin: auto;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.channel-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    background: white;
+    padding: 5px;
+}
+
+.channel-name {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+/* ── TABLET / MOBILE: normal vertical flow, body scrolls ── */
+@media (max-width: 1000px) {
+    html, body {
+        height: auto;
+        overflow: visible;
+        overflow-x: hidden;
+    }
+
+    .main {
+        grid-template-columns: 1fr;
+        height: auto;
+        overflow: visible;
+    }
+
+    .player-side {
+        overflow: visible;
+    }
+
+    .channel-side {
+        overflow: visible;
+        height: auto;
+        min-height: unset;
+    }
+
+    .channel-grid {
+        overflow: visible;
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        height: 65px;
+        padding: 0 15px;
+    }
+
+    .logo { gap: 10px; }
+    .logo-img { height: 30px; }
+    .logo-text { font-size: 18px; }
+
+    .live-badge {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .main {
+        padding: 15px;
+        gap: 20px;
+    }
+
+    .video-wrapper { border-radius: 20px; }
+
+    .player-info { margin-top: 15px; }
+    .player-info h1 { font-size: 18px; }
+
+    .channel-side {
+        padding: 15px;
+        border-radius: 20px;
+    }
+
+    .channel-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .channel-card { padding: 15px; }
+
+    .channel-logo {
+        width: 65px;
+        height: 65px;
+        font-size: 22px;
+    }
+
+    .channel-name { font-size: 13px; }
+
+    .center-play {
+        width: 70px;
+        height: 70px;
+        font-size: 32px;
+    }
+
+    .controls { padding: 15px; }
+    .live-tag { font-size: 16px; }
+}
